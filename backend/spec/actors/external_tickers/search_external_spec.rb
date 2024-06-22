@@ -38,14 +38,14 @@ RSpec.describe ExternalTickers::SearchExternal, type: :actor do
               "n" => 1_791_107
             }
           ]
-        }
+        }.to_json
       end
 
       context "when from_date and to_date are not sent" do
         it { expect(result.success?).to be true }
 
         it "returns response body" do
-          expect(result.external_ticker).to eq(response_body)
+          expect(result.external_ticker).to eq(JSON.parse(response_body))
         end
       end
 
