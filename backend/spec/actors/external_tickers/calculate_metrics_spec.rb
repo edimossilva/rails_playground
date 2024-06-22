@@ -8,22 +8,24 @@ RSpec.describe ExternalTickers::CalculateMetrics, type: :actor do
 
     context "when external_ticker is valid" do
       let(:ticker) { build(:ticker, :without_calculated_fields, ticker_results:) }
-      let(:ticker_result1) {
-        build(:ticker_result,
+      let(:ticker_result1) do
+        build(
+          :ticker_result,
           close_price: 200,
           highest_price: 300,
           lowest_price: 100,
-          volume_weighted_average_price: 1000,
+          volume_weighted_average_price: 1000
         )
-      }
-      let(:ticker_result2) {
-        build(:ticker_result,
+      end
+      let(:ticker_result2) do
+        build(
+          :ticker_result,
           close_price: 400,
           highest_price: 600,
           lowest_price: 200,
-          volume_weighted_average_price: 2000,
+          volume_weighted_average_price: 2000
         )
-      }
+      end
       let(:ticker_results) { [ticker_result1, ticker_result2] }
 
       it { expect(result.success?).to be true }

@@ -28,8 +28,12 @@ module ExternalTickers
         minimum_price = ticker_result.lowest_price if ticker_result.lowest_price < minimum_price
         close_prices.push(ticker_result.close_price)
 
-        maximum_volume = ticker_result.volume_weighted_average_price if ticker_result.volume_weighted_average_price > maximum_volume
-        minimum_volume = ticker_result.volume_weighted_average_price if ticker_result.volume_weighted_average_price < minimum_volume
+        if ticker_result.volume_weighted_average_price > maximum_volume
+          maximum_volume = ticker_result.volume_weighted_average_price
+        end
+        if ticker_result.volume_weighted_average_price < minimum_volume
+          minimum_volume = ticker_result.volume_weighted_average_price
+        end
         volumes.push(ticker_result.volume_weighted_average_price)
       end
 
