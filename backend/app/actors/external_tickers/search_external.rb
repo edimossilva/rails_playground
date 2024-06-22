@@ -16,7 +16,7 @@ module ExternalTickers
       tickers_url = PolygonUrlProvider.tickers_url(ticker_index_contract:)
       response = HTTParty.get(tickers_url)
       if response.success?
-        response.body
+        JSON.parse(response.body)
       else
         fail!(error: { message: response.body, code: response.code })
       end

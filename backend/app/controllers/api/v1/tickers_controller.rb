@@ -8,7 +8,7 @@ module Api
 
       def index
         external_tickers_result = ExternalTickers::SearchExternal.result(ticker_index_contract:)
-        ticker = ExternalTickers::Parser.result(external_tickers_result: external_tickers_result.external_ticker, ticker_index_contract:)
+        ticker = ExternalTickers::Parser.result(external_ticker: external_tickers_result.external_ticker, ticker_index_contract:)
 
         if external_tickers_result.success?
           render json: external_tickers_result.external_ticker, status: :ok
