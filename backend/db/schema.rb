@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_26_124316) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_22_133327) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,6 +28,35 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_26_124316) do
     t.index ["previous_refresh_token"], name: "index_devise_api_tokens_on_previous_refresh_token"
     t.index ["refresh_token"], name: "index_devise_api_tokens_on_refresh_token"
     t.index ["resource_owner_type", "resource_owner_id"], name: "index_devise_api_tokens_on_resource_owner"
+  end
+
+  create_table "ticker_results", force: :cascade do |t|
+    t.bigint "ticker_id", null: false
+    t.decimal "close_price", null: false
+    t.decimal "highest_price", null: false
+    t.decimal "lowest_price", null: false
+    t.integer "transactions_number", null: false
+    t.decimal "open_price", null: false
+    t.boolean "otc", default: false, null: false
+    t.datetime "aggregate_window_start_at", null: false
+    t.decimal "trading_volume", null: false
+    t.decimal "volume_weighted_average_price", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ticker_id"], name: "index_ticker_results_on_ticker_id"
+  end
+
+  create_table "tickers", force: :cascade do |t|
+    t.string "name", null: false
+    t.jsonb "input_params", default: {}, null: false
+    t.decimal "maximum_price", null: false
+    t.decimal "minimum_price", null: false
+    t.decimal "average_price", null: false
+    t.decimal "maximum_volume", null: false
+    t.decimal "minimum_volume", null: false
+    t.decimal "average_volume", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -57,4 +86,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_26_124316) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
+  add_foreign_key "ticker_results", "tickers"
 end
