@@ -35,7 +35,6 @@ class TickerResult < ApplicationRecord
   validates :lowest_price, presence: true
   validates :transactions_number, presence: true
   validates :open_price, presence: true
-  validates :otc, presence: true
   validates :aggregate_window_start_at, presence: true
   validates :trading_volume, presence: true
   validates :volume_weighted_average_price, presence: true
