@@ -7,6 +7,7 @@
 #  id                            :bigint           not null, primary key
 #  aggregate_window_start_at     :datetime         not null
 #  close_price                   :decimal(, )      not null
+#  deleted_at                    :datetime
 #  highest_price                 :decimal(, )      not null
 #  lowest_price                  :decimal(, )      not null
 #  open_price                    :decimal(, )      not null

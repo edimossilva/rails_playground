@@ -45,7 +45,7 @@ RSpec.describe ExternalTickers::SearchExternal, type: :actor do
         it { expect(result.success?).to be true }
 
         it "returns response body" do
-          expect(result.external_tickers).to eq(response_body)
+          expect(result.external_ticker).to eq(response_body)
         end
       end
 

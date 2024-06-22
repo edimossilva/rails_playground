@@ -41,6 +41,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_22_133327) do
     t.datetime "aggregate_window_start_at", null: false
     t.decimal "trading_volume", null: false
     t.decimal "volume_weighted_average_price", null: false
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ticker_id"], name: "index_ticker_results_on_ticker_id"
@@ -55,6 +56,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_22_133327) do
     t.decimal "maximum_volume", null: false
     t.decimal "minimum_volume", null: false
     t.decimal "average_volume", null: false
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

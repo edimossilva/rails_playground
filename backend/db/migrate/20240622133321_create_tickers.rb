@@ -11,6 +11,7 @@ class CreateTickers < ActiveRecord::Migration[7.1]
       t.decimal :maximum_volume, null: false
       t.decimal :minimum_volume, null: false
       t.decimal :average_volume, null: false
+      t.datetime :deleted_at
 
       t.timestamps
     end

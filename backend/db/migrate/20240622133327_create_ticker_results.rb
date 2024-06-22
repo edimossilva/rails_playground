@@ -13,6 +13,7 @@ class CreateTickerResults < ActiveRecord::Migration[7.1]
       t.datetime :aggregate_window_start_at, null: false
       t.decimal :trading_volume, null: false
       t.decimal :volume_weighted_average_price, null: false
+      t.datetime :deleted_at
 
       t.timestamps
     end

@@ -7,6 +7,7 @@
 #  id             :bigint           not null, primary key
 #  average_price  :decimal(, )      not null
 #  average_volume :decimal(, )      not null
+#  deleted_at     :datetime
 #  input_params   :jsonb            not null
 #  maximum_price  :decimal(, )      not null
 #  maximum_volume :decimal(, )      not null

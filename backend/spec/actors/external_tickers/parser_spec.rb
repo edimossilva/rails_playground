@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe ExternalTickers::Parser, type: :actor do
   describe ".call" do
-    let(:result) { described_class.result(external_ticker:) }
+    let(:result) { described_class.result(external_ticker:, ticker_index_contract:) }
 
     context "when external_ticker is valid" do
       let(:external_ticker) do
@@ -27,11 +27,26 @@ RSpec.describe ExternalTickers::Parser, type: :actor do
           ]
         }
       end
+      let(:ticker_index_contract) { TickerContracts::Index.call(ticker_index_params) }
+      let(:ticker_index_params) do
+        {
+          ticker_name: "AAPL"
+        }
+      end
 
       it { expect(result.success?).to be true }
 
-      it "returns ticker" do
-        expect(result.ticker).to eq(response_body)
+      it "returns ticker with proper fields" do
+        expect(result.ticker.name).to eq("AAPL")
+        expect(result.ticker.input_params).to eq(ticker_index_params.with_indifferent_access)
+      end
+
+      it "returns not persisted ticker" do
+        expect(result.ticker).to_not be_persisted
+      end
+
+      it "returns ticker_results" do
+        expect(result.ticker.ticker_results).to_not eq([])
       end
     end
   end

@@ -4,15 +4,15 @@ module ExternalTickers
   class SearchExternal < Actor
     input :ticker_index_contract
 
-    output :external_tickers
+    output :external_ticker
 
     def call
-      self.external_tickers = search_external_tickers(ticker_index_contract:)
+      self.external_ticker = search_external_ticker(ticker_index_contract:)
     end
 
     private
 
-    def search_external_tickers(ticker_index_contract:)
+    def search_external_ticker(ticker_index_contract:)
       tickers_url = PolygonUrlProvider.tickers_url(ticker_index_contract:)
       response = HTTParty.get(tickers_url)
       if response.success?

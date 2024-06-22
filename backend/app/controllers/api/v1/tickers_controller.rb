@@ -10,7 +10,7 @@ module Api
         external_tickers_result = ExternalTickers::SearchExternal.result(ticker_index_contract:)
 
         if external_tickers_result.success?
-          render json: external_tickers_result.external_tickers, status: :ok
+          render json: external_tickers_result.external_ticker, status: :ok
         else
           render json: { error: external_tickers_result.error[:message] }, status: external_tickers_result.error[:code]
         end
