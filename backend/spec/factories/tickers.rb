@@ -27,5 +27,14 @@ FactoryBot.define do
     maximum_volume { 100_000.0 }
     minimum_volume { 50_000.0 }
     average_volume { 75_000.0 }
+
+    trait :without_calculated_fields do
+      maximum_price { nil }
+      minimum_price { nil }
+      average_price { nil }
+      maximum_volume { nil }
+      minimum_volume { nil }
+      average_volume { nil }
+    end
   end
 end
