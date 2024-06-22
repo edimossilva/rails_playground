@@ -149,6 +149,7 @@ GEM
     connection_pool (2.4.1)
     constant_resolver (0.2.0)
     crass (1.0.6)
+    csv (3.3.0)
     date (3.3.4)
     debug (1.9.2)
       irb (~> 1.10)
@@ -230,6 +231,10 @@ GEM
     graphql (2.3.4)
       base64
     hashie (5.0.0)
+    httparty (0.22.0)
+      csv
+      mini_mime (>= 1.0.0)
+      multi_xml (>= 0.5.2)
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.0.1)
@@ -596,6 +601,7 @@ DEPENDENCIES
   factory_bot_rails
   graphiql-rails
   graphql
+  httparty
   importmap-rails
   jbuilder
   kaminari

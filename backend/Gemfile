@@ -109,6 +109,9 @@ gem "acts_as_paranoid"
 # Validation library with type-safe schemas and rules
 gem "dry-validation"
 
+#  Makes http fun again!
+gem "httparty"
+
 group :development, :test do
   gem "bullet"
 
