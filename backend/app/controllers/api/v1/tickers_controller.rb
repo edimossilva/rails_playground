@@ -7,11 +7,12 @@ module Api
       skip_after_action :verify_authorized
 
       def index
-        result = Actors::SearchExternalTickers.result(ticker_index_contract:)
-        if result.success?
-          render json: result.external_tickers, status: :ok
+        external_tickers_result = ExternalTickers::SearchExternal.result(ticker_index_contract:)
+
+        if external_tickers_result.success?
+          render json: external_tickers_result.external_tickers, status: :ok
         else
-          render json: { error: result.error[:message] }, status: result.error[:code]
+          render json: { error: external_tickers_result.error[:message] }, status: external_tickers_result.error[:code]
         end
       end
 

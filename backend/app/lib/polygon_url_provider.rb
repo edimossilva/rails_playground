@@ -10,8 +10,7 @@ class PolygonUrlProvider
   def self.tickers_url(ticker_index_contract:)
     ticker_name = ticker_index_contract[:ticker_name]
     from_date = ticker_index_contract[:from_date] || DEFAULT_FROM_DATE
-    to_date = nil
-    # to_date = ticker_index_contract[:to_date] || DEFAULT_TO_DATE
+    to_date = ticker_index_contract[:to_date] || DEFAULT_TO_DATE
     range = DEFAULT_RANGE
 
     # TODO: move to secrets or env
